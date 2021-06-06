@@ -24,10 +24,10 @@ class MyApp extends StatelessWidget {
           ),
           StreamProvider(
             initialData: null,
-            create: (context) =>
-                context.read<AuthenticationService>().authStateChanges,
+            builder: (context) => context.read<AuthenticationService>().authStateChanges,
           ),
         ],
+        
         child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
@@ -82,6 +82,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
 
   void _incrementCounter() {
     setState(() {
